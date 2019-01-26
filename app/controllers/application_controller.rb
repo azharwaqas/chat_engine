@@ -13,10 +13,10 @@ protected
   end
   
   def after_sign_in_path_for(resource)
-    if user_signed_in?
-      user_user_panel_path
+    if super_admin_signed_in?
+      dashboard_index_path
     else
-      dashboard_index_path  
+      user_user_panel_path
     end  
   end
 end
