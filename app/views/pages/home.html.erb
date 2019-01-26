@@ -1,0 +1,15 @@
+
+<% if user_signed_in? %>
+    <li role="presentation" class="pull-lg-right">
+      <%= link_to 'SignOut', destroy_user_session_path, method: :delete, class: 'button' %>
+    </li>
+<% elsif super_admin_signed_in? %>
+    <li role="presentation" class="pull-lg-right">
+      <%= link_to 'SignOut', destroy_super_admin_session_path, method: :delete, class: 'button' %>
+    </li>
+<% else %>
+    <%= render 'pages/navbar' %>
+<% end %>
+<h1>Chat Engine</h1>
+
+

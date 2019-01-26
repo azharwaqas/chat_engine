@@ -1,0 +1,23 @@
+<div class="nav nav-pills custom-nav">
+  <div class="navbar-header" style="padding-top: 9px">
+  </div>
+
+  <div class="dropdown pull-right">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Sign in</button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      <%= link_to 'User Sign In', new_user_session_path, class: 'dropdown-item' %>
+      <%= link_to 'Admin Sign In', new_super_admin_session_path, class:'dropdown-item' %>
+    </div>
+  </div>
+  
+  <div class="dropdown pull-right m-r-1">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Sign up</button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      <%= link_to 'User Registration', new_user_registration_path, class: 'dropdown-item' %>
+      <%= link_to 'Admin Registration', new_super_admin_registration_path, class: 'dropdown-item' %>
+    </div>
+  </div>
+
+</div>
