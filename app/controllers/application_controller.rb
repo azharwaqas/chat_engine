@@ -11,4 +11,8 @@ protected
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :city, :phone_number, :email, :password, :current_password)}
 
   end
+  
+  def after_sign_in_path_for(resource)
+    user_user_panel_path
+  end
 end

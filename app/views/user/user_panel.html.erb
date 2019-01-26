@@ -1,0 +1,15 @@
+<table>
+  <th> Name </th>
+  <th> City </th>
+  <th> Email </th>
+  <th> Phone </th>
+  <% @user.each do |u| %>
+    <tr>
+      <td> <%= u.name %> </td>
+      <td> <%= u.city %> </td>
+      <td> <%= u.email %> </td>
+      <td> <%= u.phone_number %> </td>
+      <td> <button class="btn btn-primary"> Chat Now </button></td>
+    </tr>
+  <% end %>
+</table>
