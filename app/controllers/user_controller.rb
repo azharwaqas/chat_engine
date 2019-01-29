@@ -1,5 +1,5 @@
 class UserController < ApplicationController
   def user_panel
-    @user = User.all
+    @users = User.all
   end
 end

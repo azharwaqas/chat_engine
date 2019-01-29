@@ -1,0 +1,43 @@
+<%= link_to 'Back', user_user_panel_path, class: "btn btn-primary"%>
+
+<div class="ui segment">
+  <h3>Inbox</h3>
+
+  <div class="ui segment">
+    <div class="item">
+      <% @conversations.each do |conversation| %>
+        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+          <% friend_msg = conversation.messages %>
+          <% arr = []%>
+          <% friend_msg.each do |val| %>
+            <% if val.user_id != current_user.id %>
+              <% arr.push(val) %>
+            <% end %>
+          <% end %>
+          <% i = 0 %>
+          <% read = arr.collect {|t| t.read} %>
+          <% read.each do |k| %>
+            <% if k == nil %>
+              <%  i = i+1 %>
+            <% end %>
+          <% end %> 
+          <% arr = [] %>
+          <% if conversation.sender_id == current_user.id %>
+            <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+            <% recipient = User.find(conversation.sender_id) %>
+          <% end %>
+          <div class="ui segment">
+            <%= link_to recipient.name.upcase, conversation_messages_path(conversation)%>
+            <div class="ui red circular label">
+              <i class="mail icon"></i><%= i %>
+            </div>
+            <br>
+          </div>  
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+         

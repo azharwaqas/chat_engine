@@ -10,8 +10,36 @@
   </head>
 
   <body>
-    <%= render 'layouts/navigation' %>
-    <%= render 'layouts/alerts' %>
-    <%= yield %>
+   <div class="ui page grid">
+    <div class="row">
+      <div class="sixteen wide centered column">
+        <h2 class="ui header">
+          <i class="mail icon"></i>
+          <div class="content">
+            Chat Engine
+          </div>
+        </h2>
+        <div class="ui purple inverted menu">
+          <% if user_signed_in? %>
+            <i class="home icon"></i><%= link_to "Home", user_user_panel_path, class: "item" %>
+            <%= link_to "Inbox", conversations_path, class: "item" %>
+            <div class="right menu">
+              <%= link_to 'SignOut', destroy_user_session_path, method: :delete, class: 'item' %>
+            </div>
+          <% elsif super_admin_signed_in? %>
+            <i class="home icon"></i><%= link_to "Home", dashboard_index_path, class: "item" %>
+            <div class="right menu">
+              <%= link_to 'SignOut', destroy_super_admin_session_path, method: :delete, class: 'item' %>
+            </div>
+          <% else %>
+            <%= render 'pages/navbar' %>
+          <% end %>
+          <%= render 'layouts/alerts' %>
+        </div>
+
+        <%= yield %>
+      </div>
+    </div>
+  </div>
   </body>
 </html>

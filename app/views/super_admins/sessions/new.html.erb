@@ -1,5 +1,8 @@
-<h2>Log in</h2>
+<div class="ui segment">
+  <h2>Super Admin Log in</h2>
+</div>
 
+<div class="ui form segment">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -19,8 +22,8 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class: "ui submit button"%>
   </div>
 <% end %>
-
+</div>
 <%= render "super_admins/shared/links" %>
