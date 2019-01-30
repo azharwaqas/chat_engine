@@ -12,6 +12,7 @@ class ConversationsController < ApplicationController
     else
       @conversation = Conversation.create!(conversation_params)
     end
+    NewChatJob.set(wait: 10.minutes).perform_later(@conversation)
     redirect_to conversation_messages_path(@conversation)
   end
 

@@ -3,11 +3,12 @@ class DashboardController < ApplicationController
   end
   
   def index
-    @user = User.all
+    @users = User.all
   end
   
   def destroy
     if super_admin_signed_in?
+      binding.pry
       User.find_by(id: params[:id]).destroy
       respond_to do |format|
         format.html { redirect_to dashboard_index_url, notice: 'User was successfully destroyed.' }
